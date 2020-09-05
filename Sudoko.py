@@ -107,18 +107,6 @@ def solve(board, UI, root):
 	printGrid(board.puzzle)
 	return 0
 
-##############################################
-
-# def Game():
-# 	board = Board()
-# 	print("The puzzle to be solved is:\n")
-# 	printGrid(board.puzzle)
-# 	solve(board)
-	
-##############################################
-
-# if __name__ == '__main__':
-# 	Game()
 
 x = Board()
 root = Tk()
@@ -128,8 +116,3 @@ root.update()
 time.sleep(1)
 
 solve(x, gui, root)
-
-
-# Sudoko.solve(x)
-# SudokuUI(Tk(), x)
-
