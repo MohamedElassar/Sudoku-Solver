@@ -94,12 +94,12 @@ def solve(board, UI, root):
 						board.puzzle[i][j] = guess
 						UI.uupdate(root, board, i, j)
 						root.update()
-						time.sleep(0.001)
+						time.sleep(0.1)
 						if(solve(board, UI, root)):
 							board.puzzle[i][j] = 0
 							UI.uupdate(root, board, i, j)
 							root.update()
-							time.sleep(0.001)
+							time.sleep(0.1)
 							board.undoUpdateDividedPuzzle(whichGrid(j, i))
 						else:
 							return 0

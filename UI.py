@@ -1,5 +1,6 @@
 from tkinter import Tk, Canvas, Frame, Button, BOTH, TOP, BOTTOM, ALL
 
+
 MARGIN = 20  # Pixels around the board
 SIDE = 50  # Width of every board cell.
 WIDTH = HEIGHT = MARGIN * 2 + SIDE * 9  # Width and height of the whole board
@@ -29,8 +30,6 @@ class SudokuUI(Frame):
 
         self.__draw_grid()
         self.__draw_puzzle()
-
-        # self.canvas.bind("<Button-1>", self.__cell_clicked)
      
     def __draw_grid(self):
         """
@@ -70,4 +69,14 @@ class SudokuUI(Frame):
     def uupdate(self, root, game, i, j):
         
         self.game = game
-        self.__draw_puzzle()
+        answer = self.game.puzzle[i][j]
+        x = MARGIN + j * SIDE + SIDE / 2
+        y = MARGIN + i * SIDE + SIDE / 2
+        color = "red"
+        if answer != 0: 
+            self.canvas.create_text(
+                x, y, text=answer, tags="hello" + str(9*i+j), fill=color)
+        else:
+            self.canvas.delete("hello" + str(9*i+j))
+
+        # self.__draw_puzzle()
