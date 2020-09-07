@@ -1,5 +1,4 @@
 from tkinter import *
-import time
 
 MARGIN = 20  # Pixels around the board
 SIDE = 50  # Width of every board cell.
@@ -57,7 +56,7 @@ class SudokuUI(Frame):
 
 #Method to update the puzzle every time a possible solution is
 #guessed or to clear incorrect solution
-    def update(self, root, game, i, j):
+    def uupdate(self, root, game, i, j):
         self.game = game
         answer = self.game.puzzle[i][j]
         x = MARGIN + j * SIDE + SIDE / 2
@@ -68,5 +67,3 @@ class SudokuUI(Frame):
                 x, y, text=answer, tags="hello" + str(9*i+j), fill=color)
         else:
             self.canvas.delete("hello" + str(9*i+j))
-        root.update()
-        time.sleep(0.1)
