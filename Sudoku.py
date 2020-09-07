@@ -45,7 +45,7 @@ class Board(object):
 		self.dividedGrid[str(grid)].remove(self.dividedGrid[str(grid)][-1])
 
 ##############################################
-#Method for printing the grid
+#Method for printing the grid in the terminal
 def printGrid(grid):
 	for i in grid:
 		print(i)
