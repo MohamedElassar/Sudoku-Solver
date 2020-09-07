@@ -24,7 +24,7 @@ class SudokuUI(Frame):
         self.__draw_grid()
         self.__draw_puzzle()
 
-#Method to draw grid for puzzle
+#Method to draw grid for sudoku puzzle
     def __draw_grid(self):
         for i in range(10):
             color = "blue" if i % 3 == 0 else "gray"
