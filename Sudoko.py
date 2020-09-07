@@ -105,6 +105,7 @@ def solve(board, UI, root):
 							return 0
 				return 1
 	printGrid(board.puzzle)
+	time.sleep(2)
 	return 0
 
 
