@@ -1,14 +1,11 @@
-from tkinter import Tk, Canvas, Frame, Button, BOTH, TOP, BOTTOM, ALL
-
+from tkinter import *
 
 MARGIN = 20  # Pixels around the board
 SIDE = 50  # Width of every board cell.
 WIDTH = HEIGHT = MARGIN * 2 + SIDE * 9  # Width and height of the whole board
 
+#Class to create UI using tkinter library
 class SudokuUI(Frame):
-    """
-    The Tkinter UI, responsible for drawing the board and accepting user input.
-    """
     def __init__(self, parent, game):
         self.game = game
         self.parent = parent
@@ -23,18 +20,11 @@ class SudokuUI(Frame):
                              width=WIDTH,
                              height=HEIGHT)
         self.canvas.pack(fill=BOTH, side=TOP)
-        # random_button = Button(self,
-        #                       text="New Puzzle",
-        #                       command=self.__new_puzzle)
-        # random_button.pack(fill=BOTH, side=BOTTOM)
-
         self.__draw_grid()
         self.__draw_puzzle()
-     
+
+#Method to draw grid for puzzle
     def __draw_grid(self):
-        """
-        Draws grid divided with blue lines into 3x3 squares
-        """
         for i in range(10):
             color = "blue" if i % 3 == 0 else "gray"
             x0 = MARGIN + i * SIDE
@@ -49,6 +39,7 @@ class SudokuUI(Frame):
             y1 = MARGIN + i * SIDE
             self.canvas.create_line(x0, y0, x1, y1, fill=color)
 
+#Method to draw intial puzzle 
     def __draw_puzzle(self):
         self.canvas.delete("numbers")
         for i in range(9):
@@ -61,13 +52,11 @@ class SudokuUI(Frame):
                     self.canvas.create_text(
                         x, y, text=answer, tags="numbers", fill=color)
                 else:
-                    # self.canvas.delete()
-                    self.canvas.create_text(
-                        x, y, text="", tags="numbers", fill=color)
+                    pass
 
-
+#Method to update the puzzle every time a possible solution is
+#guessed or to clear incorrect solution
     def uupdate(self, root, game, i, j):
-        
         self.game = game
         answer = self.game.puzzle[i][j]
         x = MARGIN + j * SIDE + SIDE / 2
@@ -78,5 +67,3 @@ class SudokuUI(Frame):
                 x, y, text=answer, tags="hello" + str(9*i+j), fill=color)
         else:
             self.canvas.delete("hello" + str(9*i+j))
-
-        # self.__draw_puzzle()
